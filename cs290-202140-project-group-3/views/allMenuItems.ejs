@@ -1,0 +1,21 @@
+<%- include("common-header.ejs", {title:"All Menu Items"}) %>
+
+<div class="form-box">
+  <h2 class="text-center m-3"><b>All Menu Items</b></h2>
+  <div class="mx-5">
+  <table class="table table-light table-bordered fs-4" >
+  <tbody>
+    <% for(let singleItem of menuItemList) {
+      -%>
+      <tr>
+        <td><a href="<%= singleItem.url %>">View <%= singleItem.name %></a></td>
+        <td><a href="/menuItems/update/<%= singleItem._id %>">Edit this menu item</a></td>
+      </tr>
+    <% } %>
+  </tbody>
+  </table>
+  </div>
+  
+  <p class="text-center"><a class="fs-4 button-link" href="/menuItems/create">Create a new menu item</a></p>
+  </div>
+  <%- include("common-footer.ejs") %>

@@ -1,0 +1,54 @@
+<%- include("common-header.ejs", {title: name}) %>
+
+  <div class="menuItem form-box">
+    <div class=" d-lg-flex align-items-center">
+      <div>
+        <h2 class="m-3">| <%= name %></h2>
+        <p class="m-3 fs-4">Menu Section: <%= menu_section %></p>
+        <p class="m-3 fs-4">Featured: <%= featured %></p>
+        <p class="m-3 fs-4">Price: <%= format_price %></p>
+        <p class="m-3 fs-4">Ingredients:</p>
+        <ul>
+          <% for (let c of ingredients) { %>
+            <li class="fs-5"><%= c %></li>
+          <% } %>
+        </ul>
+      
+        
+        <p class="fs-4 m-3">Current Menus: </p>
+        <div class="list-group mx-3">
+          <% for (let c of current_menus) { %>
+            <a href="<%- c.url %>" class="list-group-item list-group-item-action fs-5"><u><%= c.title %></u></a>
+          <% } %>
+        </div>
+      
+    </div>
+      <div class="m-5" >
+        <p class="fs-4 m-3">Current Image: </p>
+        
+        <% if(image_use_file === false) { %> 
+          <% if(image_url !== "") { %>
+            <img  class="menu-item-image" src="<%- image_url %>" alt = "<%= name %>">
+          <% } %>
+        <% } else { %>
+          <% if (img.data !== undefined) { %> 
+            <div>
+            <img class="menu-item-image" src="data:image/<%=img.contentType%>;base64,
+            <%=img.data.toString('base64')%>">
+            </div>
+          <% } %> <!--/images/raspberrypie.jpg-->
+        <% } %>
+      </div>
+      
+     </div>
+     <hr>
+      
+      <a class="button-link fs-5 mx-3" href="/menuItems/update/<%=_id %>"> Edit this item</a>
+      <a class="button-link fs-5 mx-3" href="/menuItems/delete/<%=_id %>"> Delete this item</a>
+      <hr>
+      <p><a class="button-link fs-5 m-3" href="/menuItems"> Return to all menu items</a></p>
+    </div>
+
+
+    <%- include("common-footer.ejs") %>
+

@@ -1,0 +1,40 @@
+<%- include("common-header.ejs", {title:"Albacari Reservations"}) %>
+<div class="container">
+  <div style="text-align:center">
+<h2>Albacari Reservations</h2>
+</div>
+<table class="table table-striped table-hover" style="background-color: #e4c664; border-radius: .65rem;">
+<thead>
+    <tr>
+      <th scope="col">Date/Time</th>
+      <th scope="col">Name</th>
+      <th scope="col"># of People</th>
+      <th scope="col">Special Occassion</th>
+      <th scope="col">Menu Availible</th>
+    </tr>
+</thead>
+<tbody>
+  <% for(let reservation of reservationList) { -%>
+    <tr>
+          <th scope="row"><a href="<%- reservation.url %>" class="reservationLink"><%- reservation.date %></a></th>
+          <%for(let c of reservation.customer) { -%>
+            <%= c && c._id.equals(reservation.customer) ? "true" : "" %>
+            <td><a href="/customer/<%- c._id %>" class="reservationLink"><%- c.customerFirstName %> <%- c.customerLastName %></a></td>
+          <% } %>
+          <td><%- reservation.peopleAmount %></td>
+          <td><%- reservation.specialOccassion %></td>
+          <td>
+          <%for(let m of reservation.menuAvalible) { -%>
+            <%= m && m._id.equals(reservation.menuAvalible) ? "true" : "" %>
+            <a href="/menus/<%- m._id %>" class="reservationLink"> <%- m.title %></a>
+          <% } %>
+        </td>
+    </tr>
+  <% } %>
+</tbody>
+</table>
+<a href="/reservation/create/" class="reservationLink">Create a reservation</a>
+<p><a href="/" class="reservationLink">Return Home</a></p>
+</div>
+
+<%- include("common-footer.ejs") %>

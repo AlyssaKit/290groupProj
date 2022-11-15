@@ -1,0 +1,28 @@
+<%- include("common-header.ejs", {title: "Individual Reservation Record"}) %>
+
+<div class="container">
+    <div style=" text-align: center;">
+        <h2>Customer: 
+        <% for (let customer of reservation.customer) { %>
+            <a href="/customer/<%- customer._id %>" class="reservationLink"><%- customer.customerFirstName %> <%- customer.customerLastName %></a></h2>
+        <% } %>
+
+        <h3>Date and Time: </h3>
+        <p><%- reservation.date %></p>
+        <h3>Amount of People: </h3> 
+        <p><%- reservation.peopleAmount %></p>
+        <h3>Special Occassion: </h3>
+        <p><%- reservation.specialOccassion %></p>
+        <h3>Menu Availible: </h3>
+        <% for (let menuAvalible of reservation.menuAvalible) { %>
+            <li><a href="/menus/<%- menuAvalible._id %>" class="reservationLink"><%- menuAvalible.title %></a></li> 
+        <% } %>
+    </div>
+    <br>
+    <ul>
+    <li><a href="/reservation/update/<%= reservation._id %>" class="reservationLink">Update this reservation</a></li>
+    <li><a href="/reservation/delete/<%= reservation._id %>" class="reservationLink">Delete this reservation</a></li>
+    <li><a href="/reservation" class="reservationLink">Return to Reservation List</a></li>
+    </ul>
+</div>
+<%- include("common-footer.ejs") %>

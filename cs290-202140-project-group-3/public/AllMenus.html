@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Albacari-Menus</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Della+Respira&family=PT+Serif&family=Raleway:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!--Web font theme
+    font-family: 'Della Respira', serif;
+    font-family: 'PT Serif', serif;
+    font-family: 'Raleway', sans-serif;
+    -->
+    <style></style>
+  </head>
+  <body>
+
+    <!--bootstrap navigation menu-->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light mb-2"
+      aria-label="navigation panel"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-uppercase fs-1 text-white" href="#">Albacari</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Menu.html">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="MenuItem.html">Menu Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="AllMenus.html">All Menus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catering.html">Catering</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Reservations.html">Reservations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="customer.html">Customers</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <section class="menu-header">
+        <img class = "menu-background" src="images/menuheader.jpg" alt="">
+        <div class="menu-title-description">
+            <h1 id="main-menu-title">Our Menus</h1>
+            <div id="menu-description-info"> Find delicious meals all day long. See our featured menus below.</div>
+        </div>
+    </section>
+
+    <section class="menus">
+        <section class="menu" id="catering-menu">
+            <div class="menu-description">
+                <h2 class="menu-title"><i>Catering</i> Menu</h2>
+                <p>Catering for any occasion</p>
+                <p><a href="#" title="Catering options" class="btn btn-light shadow" role="button">Catering Options</a></p>
+            </div>
+            <div class="menu-image"><img class="menu-page-image" src="images/catering.jpg" alt ="Row of catering dishes"></div>
+        </section>
+
+        <section class="menu" id="lunch-menu">
+            <div class="menu-description">
+                <h2 class="menu-title"><i>Lunch Menu</i></h2>
+                <p>Lunch menu selections are available before 5:00 PM</p>
+                <p><a href="#" title="Lunch Menu" class="btn btn-light shadow" role="button">Lunch Items</a></p> 
+            </div>          
+            <div class="menu-image"><img class="menu-page-image" src="images/lunch.jpg" alt ="Sandwich and salad"></div>
+        </section>
+
+        <section class="menu" id="dinner-menu">
+            <div class="menu-description">
+                <h2 class="menu-title"><i>Dinner</i> Menu</h2>
+                <p>Dinner menu selections are available after 5:00 PM</p>
+                <p><a href="#" title="Dinner Menu" class="btn btn-light shadow" role="button">Dinner Items</a></p>
+            </div>           
+            <div class="menu-image"><img class="menu-page-image" src="images/dinner.jpg" alt ="Woodfired pizza"></div>
+        </section>
+
+        <section class="menu" id="seasonal-menu">
+            <div class="menu-description">
+                <h2 class="menu-title"><i>Seasonal</i> Menu</h2>
+                <p>See whats new this season</p>
+                <p><a href="#" title="Seasonal menu" class="btn btn-light shadow" role="button">Seasonal Items</a></p> 
+            </div>       
+            <div class="menu-image"><img class="menu-page-image" src="images/seasonal.jpg" alt ="Bowl of soup"></div>
+        </section>
+
+    </section>
+
+    <!--bootstrap footer-->
+    <footer class="bg-dark text-white pt-5 pb-4" aria-label="albacarifooter">
+      <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4 font-weight-bold text-warning">
+              albacari
+            </h3>
+            <p>
+              Thank you for supporting Albacari. Smash the like and subscribe.
+            </p>
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4 font-weight-bold text-warning">
+              Information
+            </h3>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                About Us</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Careers</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Staff</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Food</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4 font-weight-bold text-warning">
+              Useful Links
+            </h3>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Your Account</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Donate</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Place an Order</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none">
+                Help</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4 font-weight-bold text-warning">
+              Contact
+            </h3>
+            <p>
+              <i class="fas fa-home mr-3"></i> 420 Fake Street - Salem, OR 97302
+            </p>
+            <p>
+              <i class="fas fa-envelope mr-3"></i
+              ><a
+                href="mailto:albacarimgmt@gmail.com"
+                title="Send us an e-mail"
+              >
+                albacarimgmt@gmail.com
+              </a>
+            </p>
+            <p><i class="fas fa-phone mr-3"></i> 971-123-4567</p>
+          </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p>Copyright 2022 All rights reserved by Albacari</p>
+          </div>
+
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 25px"
+                    ><i class="fab fa-facebook"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 25px"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 25px"
+                    ><i class="fab fa-google-plus"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 25px"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 25px"
+                    ><i class="fab fa-tiktok"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+  </body>
+</html>

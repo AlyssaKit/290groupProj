@@ -1,0 +1,60 @@
+<%- include("common-header.ejs", {title:"Albacari Reviews"}) %>
+
+<%  let avg = 0;
+    let count = 0;
+    for(review of reviewList){
+       avg = avg + review.rating;
+       count++;
+    }
+    avg = avg/count; %> 
+<div class="container " style="text-align:center">
+
+<h1>Albacari Reviews</h1>
+
+<label class="rating-label" style="text-align:center"><strong><%- avg %> average based on <%- count %> reviews.</strong>
+  <div style="text-align:center">
+  <input
+    class="rating"
+    max="5"
+    readonly
+    step="0.01"
+    style="--value:<%- avg %>"
+    type="range"
+    value=<%- avg %>>
+  </div>
+</label>
+<hr style="border:3px solid #f1f1f1">
+<br>
+  <% for(let review of reviewList) { -%>
+          <h3 scope="row" ><a href="<%- review.url %>" class="reservationLink"><%- review.lastName %>, <%- review.firstName %> </a></h3>      
+
+          <label class="rating-label myDIV" style="text-align:center"><strong>Rating</strong>
+            <div class="myDIV" style="text-align:center">
+            <input
+              class="rating"
+              max="5"
+              readonly
+              step="0.01"
+              style="--value:<%- review.rating %>"
+              type="range"
+              value=<%- review.rating %>>
+            </div>
+            <div class="hide"><%- review.rating %></div>
+          </label>
+          <img src="<%- review.image_url %>" alt = "<%- review.firstName %>’s review photo"  height="200">
+          <p style="padding: 1rem 0rem 0rem 0rem">"<%- review.comment %>"</p>
+          <h4>Menus:</h4>
+          <%for(let m of review.menuAvalible) { -%>
+            <%= m && m._id.equals(review.menuAvalible) ? "true" : "" %>
+            <a href="/menus/<%- m._id %>" class="reservationLink"> <%- m.title %></a>
+          <% } %>
+<br>
+<hr>
+  <% } %>
+<a href="/review/create/" class="reservationLink">Create a review</a>
+<p><a href="/" class="reservationLink">Return Home</a></p>
+</div>
+ 
+<%- include("common-footer.ejs") %>
+
+

@@ -1,0 +1,21 @@
+<%- include("common-header.ejs", {title: menu.title}) %>
+
+    <div class="singleMenu form-box">
+      <h2 class="m-3">| <%= menu.title %> Menu</h2>
+      <p class="m-3 fs-4">Description: <%= menu.description %></p>
+      <p class="m-3 fs-4">Featured: <%= menu.featured %></p>
+      <p class="m-3 fs-4">Menu items: </p>
+      <div class="list-group mx-3">
+      <% for (let m of items) { %>
+        <a href="<%- m.url %>" class="list-group-item list-group-item-action "><u><%= m.name %></u></a>
+      <% } %>
+      </div>
+      <hr>
+      <a class="button-link fs-5 mx-3" href="/menus/update/<%=menu._id %>"> Edit this menu </a>
+      <a class="button-link fs-5 mx-3" href="/menus/delete/<%=menu._id %>"> Delete this menu </a>
+      <hr>
+      <p><a class="button-link fs-5 m-3" href="/menus"> Return to all menus</a></p>
+      
+    </div>
+
+<%- include("common-footer.ejs") %>

@@ -1,0 +1,105 @@
+<%- include("common-header.ejs", {title: `Update Menu Item: ${menuItem.name}` })%>
+
+<% if(locals.errors) { %>
+  <div class="alert alert-danger">
+    <ul class="mb-0" >
+      <% errors.forEach(function(error) { %>
+        <li class="errors-list"><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<section class= "form-box">
+<form method="POST" action="/menuItems/update/<%= menuItem._id %>" id="menuItemForm" enctype="multipart/form-data">
+  <input type="hidden" name="id" value="<%= menuItem._id %>" >
+  <div class="m-3">
+    <label for="name" class="fs-4">Name <em>(Required)</em></label>
+    <input type="text" class="form-control" name="name" id="name"
+      value="<%= menuItem.name %>" required maxlength="20">
+  </div>
+  
+
+  <fieldset class="m-3">
+    <legend class="fs-4">Menu Section</legend>
+    <input type="radio" id="appetizer" name="menu_section" value="Appetizer" <%= menuItem.menu_section === "Appetizer" ? "checked" : "" %>>
+    <label for="appetizer">Appetizer</label><br>
+    <input type="radio" id="main_course" name="menu_section" value="Main Course" <%= menuItem.menu_section === "Main Course" ? "checked" : "" %>>
+    <label for="main_course">Main Course</label><br>
+    <input type="radio" id="dessert" name="menu_section" value="Dessert" <%= menuItem.menu_section === "Dessert" ? "checked" : "" %>>
+    <label for="dessert">Dessert</label><br>
+    <input type="radio" id="drink" name="menu_section" value="Drinks" <%= menuItem.menu_section === "Drinks" ? "checked" : "" %>>
+    <label for="drink">Drinks</label><br>
+  </fieldset>
+  <fieldset class="m-3">
+    <legend class="fs-4">Which image type would you like to use? <em>(Required)</em></legend>
+    <input type="radio" id="file" name="use_file" required value="true" <%= menuItem.image_use_file === true ? "checked" : "" %>>
+    <label for="file">Upload file</label><br>
+    <input type="radio" id="url" name="use_file" required value="false" <%= menuItem.image_use_file === false ? "checked" : "" %>>
+    <label for="url">URL</label><br>
+  </fieldset>
+  <div class="m-3">
+    <label class= "fs-4" for="image">Upload Image(png)</label>
+    <input type="file" accept="image/png" class= "form-control" id="image" name="image" value="" >
+  </div>
+  <% if (menuItem.img.data !== undefined) { %> 
+    <div class="m-3">
+      <p class="fs-6">Current upload:</p>
+    <img class="menu-form-image" src="data:image/<%=menuItem.img.contentType%>;base64,
+    <%=menuItem.img.data.toString('base64')%>">
+    </div>
+  <% } %> 
+  <div class="m-3">
+    <label for="image_url" class="fs-4">Image URL</label>
+    <input type="text" class="form-control" name="image_url" id="image_url"
+    aria-describedby="imgHelp" value="<%= menuItem.image_url %>">
+    <div id="imgHelp" class="form-text text-dark">For local files, store in public/images and enter as /images/filename.</div>
+  </div>
+  <div class="m-3">
+    <label for="price" class="fs-4">Price <em>(Required)</em></label>
+    <input type="number" class="form-control" name="price" id="price"
+    aria-describedby="priceHelp" value="<%= menuItem.price %>" required step="0.01" min="0">
+    <div id="priceHelp" class="form-text text-dark">Enter price as a decimal number.</div>
+  </div>
+  <fieldset class="m-3">
+    <legend class="fs-4">Feature this menu item?</legend>
+    <input type="radio" id="yes" name="featured" value="true" <%= menuItem.featured === true ? "checked" : "" %>>
+    <label for="yes">Yes</label><br>
+    <input type="radio" id="no" name="featured" value="false" <%= menuItem.featured === false ? "checked" : "" %>>
+    <label for="no">No</label><br>
+  </fieldset>
+  <div class="m-3">
+    <label for="ingredients" class="fs-4">Ingredients:</label>
+    <textarea class="form-control" name="ingredients" id="ingredients" rows="8"
+    aria-describedby="ingredientsHelp"><%= menuItem.ingredients.join("\n") -%></textarea>
+    <div id="ingredientsHelp" class="form-text text-dark">Enter one ingredient per line.</div>
+  </div>
+  
+  <% if(locals.menus) { %> 
+  <fieldset class="m-3 ">
+    <legend>Current Menus</legend>
+    <% for(let m of menus) { %>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="menus" value="<%= m._id %>"
+        id="<%= m._id %>" 
+        <% if(menuItem.current_menus !== undefined) { %> 
+          <% for(let menu of menuItem.current_menus) {%>
+          <%= menu && menu._id.equals(m._id) ? "checked" : "" %>
+          <% } %>
+        <% } %>
+        >
+        <label for="<%= m._id %>" class="form-check-label"><%= m.title %></label>
+      </div>  
+    <% } %>
+  </fieldset>
+  <% } %>
+    
+
+  <hr>
+  <button class="btn btn-dark m-3 fs-5" type="submit">Submit</button>
+  <p><a class="button-link fs-5 m-3" href="/menuItems/">Cancel Edit</a></p>
+   
+</form>
+</section>
+
+<%- include("common-footer.ejs") %>

@@ -1,0 +1,223 @@
+<%- include("common-header.ejs", { title: title })%>
+
+
+<% if(locals.errors) {   //Check to see if there even is an error variable %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% errors.forEach(function(error) { %>
+          <li><%= error %></li>
+        <% }); %>
+      </ul>
+    </div>
+  <% } %>
+  
+
+
+  <div class="form-box">
+  <!-- <%# Set action to return to the update route regardless of if we got here from create or update routes %> -->
+<form method="POST" action="/customer/update/<%= newCustomer._id %>" id="customerForm">
+    <input type="hidden" name="id" value="<%= newCustomer._id %>" >
+    <br>
+
+    
+    <!-- customer first name -->
+    <div class="mxy-3">
+        <label for="customerFirstName" class="form-label">Customer First Name <em>(Required)</em></label>
+        <input type="text" class="form-control" name="customerFirstName" id="customerFirstName"
+        value="<%= newCustomer.customerFirstName %>" required>
+    </div>
+    <br>
+
+    <!-- customer last name -->
+    <div class="my-3">
+        <label for="customerLastName" class="form-label">Customer Last Name <em>(Required)</em></label>
+        <input type="text" class="form-control" name="customerLastName" id="customerLastName"
+        value="<%= newCustomer.customerLastName %>" required>
+      </div>
+      <br>
+
+    <!-- customer street address -->
+    <div class="my-3">
+        <label for="customerAddress" class="form-label">Customer Street Address <em>(Required)</em></label>
+        <input type="text" class="form-control" name="customerAddress" id="customerAddress"
+        value="<%= newCustomer.customerAddress %>" required>
+      </div>
+      <br>
+
+    <!-- customer city -->
+    <div class="my-3">
+        <label for="customerCity" class="form-label">Customer City <em>(Required)</em></label>
+        <input type="text" class="form-control" name="customerCity" id="customerCity"
+        value="<%= newCustomer.customerCity %>" required>
+      </div>
+      <br>
+
+    <!-- customer state -->
+    <div class="my-3">
+    <label for="customerState" class="form-label">Customer State</label>
+    <select class="form-control" name="customerState" id="customerState" aria-describedby="stateHelp">
+    <option>AL - Alabama</option>
+    <option>AK - Alaska</option>
+    <option>AZ - Arizona</option>
+    <option>AR - Arkansas</option>
+    <option>CA - California</option>
+    <option>CO - Colorado</option>
+    <option>CT - Connecticut</option>
+    <option>DE - Delaware</option>
+    <option>FL - Florida</option>
+    <option>GA - Georgia</option>
+    <option>HI - Hawaii</option>
+    <option>ID - Idaho</option>
+    <option>IL - Illinois</option>
+    <option>IN - Indiana</option>
+    <option>IA - Iowa</option>
+    <option>KS - Kansas</option>
+    <option>KY - Kentucky</option>
+    <option>LA - Louisiana</option>
+    <option>ME - Maine</option>
+    <option>MD - Maryland</option>
+    <option>MA - Massachusetts</option>
+    <option>MI - Michigan</option>
+    <option>MN - Minnesota</option>
+    <option>MS - Mississippi</option>
+    <option>MO - Missouri</option>
+    <option>MT - Montana</option>
+    <option>NE - Nebraska</option>
+    <option>NV - Nevada</option>
+    <option>NH - New Hampshire</option>
+    <option>NJ - New Jersey</option>
+    <option>NM - New Mexico</option>
+    <option>NY - New York</option>
+    <option>NC - North Carolina</option>
+    <option>ND - North Dakota</option>
+    <option>OH - Ohio</option>
+    <option>OK - Oklahoma</option>
+    <option>OR - Oregon</option>
+    <option>PA - Pennsylvania</option>
+    <option>RI - Rhode Island</option>
+    <option>SC - South Carolina</option>
+    <option>SD - South Dakota</option>
+    <option>TN - Tennessee</option>
+    <option>TX - Texas</option>
+    <option>UT - Utah</option>
+    <option>VT - Vermont</option>
+    <option>VA - Virginia</option>
+    <option>WA - Washington</option>
+    <option>WV - West Virginia</option>
+    <option>WI - Wisconsin</option>
+    <option>WY - Wyoming</option>
+    </select>
+    </div>
+    <br>
+
+    <!-- customer zip code slider -->
+  <div class="my-3">
+    <label for="customerZipcode" class="form-label">Customer Zip Code<em>(Required)</em> </label>
+      <input type="range" class="form-control" name="customerZipcode" id="customerZipcode" value="<%= newCustomer.customerZipcode %>" required min="00001" max="99950" step="1">
+      <output class="zip-output" for="customerZipcode"></output>
+      </div>
+      <br>
+
+    <!-- customer telephone -->
+    <div class="my-3">
+        <label for="customerTelephone" class="form-label">Customer Telephone <em>(Required)</em></label>
+        <input type="text" class="form-control" name="customerTelephone" id="customerTelephone"
+        value="<%= newCustomer.customerTelephone %>" required>
+      </div>
+      <br>
+
+    <!-- customer favorite foods -->
+  <fieldset class="mb-3 ">
+    <legend>Food Availible</legend>
+    <% for(let fav of favFoods) { %>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="customerFavoriteFoods" value="<%= fav._id %>"
+        id="<%= fav._id %>" 
+        <% for(let ff of newCustomer.customerFavoriteFoods) {%>
+        <%= ff && ff._id.equals(fav._id) ? "checked" : "" %>
+        <% } %>
+        >
+        <label for="<%= fav._id %>" class="form-check-label"><%= fav.name %> </label>
+      </div>  
+    <% } %>
+    <div class="form-check">
+
+      <input type="checkbox" class="form-check-input" name="customerFavoriteFoods" value=""
+      id="food_none" <%= !favFoods.customerFavoriteFoods ? "" : "" %>>
+      <label for="food_none" class="form-check-label">None</label>
+    </div>
+  </fieldset>
+
+
+     <!-- customer catering orders -->
+
+    <fieldset class="mb-3 ">
+      <legend>Catering Dates</legend>
+      <% for(let c of cater) { %>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" name="customerCateringOrders" value="<%= c._id %>"
+          id="<%= c._id %>" 
+          <% for(let cc of newCustomer.customerCateringOrders) {%>
+          <%= cc && cc._id.equals(c._id) ? "checked" : "" %>
+          <% } %>
+          >
+          <label for="<%= c._id %>" class="form-check-label"><%= c.cateringDate %> </label>
+        </div>  
+      <% } %>
+      <div class="form-check">
+  
+        <input type="checkbox" class="form-check-input" name="customerCateringOrders" value=""
+        id="cater_none" <%= !cater.customerCateringOrders ? "" : "" %>>
+        <label for="cater_none" class="form-check-label">None</label>
+      </div>
+    </fieldset>
+
+
+
+
+    <!-- customer reservations -->
+    <fieldset class="mb-3 ">
+      <legend>Reservations</legend>
+      <% for(let r of reserve) { %>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" name="customerReservations" value="<%= r._id %>"
+          id="<%= r._id %>" 
+          <% for(let res of newCustomer.customerReservations) {%>
+          <%= res && res._id.equals(r._id) ? "checked" : "" %>
+          <% } %>
+          >
+          <label for="<%= r._id %>" class="form-check-label"><%= r.date %></label>
+        </div>  
+      <% } %>
+      <div class="form-check">
+  
+        <input type="checkbox" class="form-check-input" name="customerReservations" value=""
+        id="reserve_none" <%= !cater.customerCateringOrders ? "" : "" %>>
+        <label for="reserve_none" class="form-check-label">None</label>
+      </div>
+    </fieldset>
+
+    <button class="btn btn-primary my-3" type="submit">Submit</button>
+
+    
+    <p><a href="/customer">Return to Customer List</a></p>
+
+    
+
+    </form>
+  </div>
+
+<script>
+//zip code slider output
+const zipCode = document.querySelector('#customerZipcode');
+const zipOutput = document.querySelector('.zip-output');
+
+zipOutput.textContent = zipCode.value;
+
+zipCode.addEventListener('input', function() {
+    zipOutput.textContent = zipCode.value;
+});
+
+</script>
+
+<%- include("common-footer.ejs") %>

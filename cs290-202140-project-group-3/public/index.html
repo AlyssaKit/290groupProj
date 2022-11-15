@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Albacari</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Della+Respira&family=PT+Serif&family=Raleway:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <script src="./javascript/gmap.js"></script>
+    <!--Web font theme
+    font-family: 'Della Respira', serif;
+    font-family: 'PT Serif', serif;
+    font-family: 'Raleway', sans-serif;
+    -->
+    <style></style>
+  </head>
+  <body>
+
+
+    <!--bootstrap navigation menu-->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-dark"
+      aria-label="navigation panel"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-uppercase fs-1 text-white" href="/">Albacari</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/menus">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/menuItems">Menu Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/catering">Catering</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/reservation">Reservations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/customer">Customers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/review">Reviews</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- bootstrap carousel -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./images/carousel1.jpg" class="d-block w-100" alt="server holding plates">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Chef Inspired</h5>
+            <p>Whether you're looking for a light meal or a meal fit for a king/queen, come on down to ALBACARI</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./images/carousel2.jpg" class="d-block w-100" alt="chefs working">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Farm to Table</h5>
+            <p>We source our food from local farms to bring you the freshest seasonal meats and produce available.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./images/carousel3.jpg" class="d-block w-100" alt="people gathering">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Hospitality Reimagined</h5>
+            <p>Whether it's a date night, or a work meeting. We have the space available to host any event you can imagine.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+
+    <!-- google maps API -->
+    <h2 class="bg-dark text-white text-center py-2 my-2">Google Maps</h2>
+    <h2 class="bg-dark text-white text-center py-2 my-2">Directions</h2>
+
+
+      <!-- directions -->
+      <div id="floating-panel">
+        <b>Start: </b>
+        <select id="start">
+          <option value="portland, or">Portland, OR</option>
+          <option value="eugene, or">Eugene, OR</option>
+          <option value="bend, or">Bend, OR</option>
+          <option value="newport, or">Newport, OR</option>
+          <option value="seattle, wa">Seattle, WA</option>
+          <option value="vancouver, wa">Vancouver, WA</option>
+          <option value="boise, id">Boise, ID</option>
+          <option value="san francisco, ca">San Francisco, CA</option>
+          <option value="san bernardino, ca">San Bernardino, CA</option>
+          <option value="los angeles, ca">Los Angeles, CA</option>
+          <option value="reno, nv">Reno, NV</option>
+          <option value="las vegas, nv">Las Vegas, NV</option>
+          <option value="new york, ny">New York, NY</option>
+          <option value="miami, fl">Miami, FL</option>
+  
+          
+        </select>
+        <b>End: </b>
+        <select id="end">
+          <option value="salem, or">Albacari</option>
+        </select>
+      </div>
+  
+
+
+    <!-- map container -->
+    <div id="map"></div>
+
+    
+  
+
+
+
+
+        
+
+
+    <!--bootstrap footer-->
+    <footer class="bg-dark text-white pt-5 pb-4" aria-label="albacarifooter">
+      <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4 font-weight-bold text-warning">
+              albacari
+            </h3>
+            <p>
+              Thank you for supporting Albacari. Tell us about your experience!
+              <a href="/review/" style="color: gold">
+                Leave a review 
+                </a>
+            </p>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4 font-weight-bold text-warning">
+              Contact
+            </h3>
+            <p>
+              <i class="fas fa-home mr-3"></i> 420 Fake Street - Salem, OR 97302
+            </p>
+            <p>
+              <i class="fas fa-envelope mr-3"></i
+              ><a
+                href="mailto:albacarimgmt@gmail.com"
+                title="Send us an e-mail"
+                style="color:gold"
+              >
+                albacarimgmt@gmail.com
+              </a>
+            </p>
+            <p><i class="fas fa-phone mr-3"></i> 971-123-4567</p>
+          </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <div class="row">
+          <div class="col-md-7 col-lg-8 mx-auto">
+            <p>Copyright 2022 All rights reserved by Albacari</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- needed for google maps API -->
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSNml6tmefEjfsDA-CjO4o1Zo5rkJ1LqI&callback=initMap" defer>
+</script>
+
+<script src="./javascript/gmap.js"></script>
+
+
+  </body>
+</html>

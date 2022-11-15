@@ -1,0 +1,68 @@
+<%- include("common-Header.ejs", {title:title}) %>
+<h1>Catering Form</h1>
+
+<form method="POST" action="/catering/update/<%= catering._id %>" id="cateringForm">
+    <input type="hidden" name="id" value="<%= catering._id %>" >
+  <div class="container">
+    <div class="mb-3">
+      <label for="cateringDate" class="form-label">Date: <em>(Required, please format month-day-year time AM/PM (eg 08-22-2022 5:30 PM))</em></label>
+      <input type="text" class="form-control" name="cateringDate" id="cateringDate"
+        value="<%= catering.cateringDate %>" required>
+    </div>
+    <fieldset class="mb-3 ">
+        <legend>Customer</legend>
+        <% for(let c of customer) { %>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="cateringCustomer" value="<%= c._id %>"
+            id="<%= c._id %>" 
+            <% for(let cC of catering.cateringCustomer) { %>
+                <%= cC && cC._id.equals(c._id) ? "checked" : "" %>
+                <% } %>
+            >
+            <label for="<%= c._id %>" class="form-check-label"><%= c.customerFirstName %> <%= c.customerLastName %></label>
+          </div>  
+        <% } %>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="cateringCustomer" value=""
+          id="customer_none" <%= !catering.cateringCustomer ? "checked" : "" %>>
+          <label for="customer_none" class="form-check-label">None</label>
+        </div>
+      </fieldset>
+
+    <div class="mb-3">
+      <label for="cateringPartySize" class="form-label">Enter the amount of people in the party <em>(Required)</em></label>
+      <input type="number" class="form-control" name="cateringPartySize" id="cateringPartySize"
+        value="<%= catering.cateringPartySize %>" required min="1" max="100">
+    </div>
+
+    <div class="mb-3">
+        <label for="cateringAddress" class="form-label">Enter the address for the event <em>(Required)</em></label>
+        <input type="text" class="form-control" name="cateringAddress" id="cateringAddress"
+        value="<%= catering.cateringAddress %>">
+    </div>
+
+    <fieldset class="mb-3 ">
+        <legend>Menu Choice</legend>
+        <% for(let m of menus) { %>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="cateringMenu" value="<%= m._id %>"
+            id="<%= m._id %>" 
+            <% for(let cM of catering.cateringMenu) {%>
+            <%= cM && cM._id.equals(m._id) ? "checked" : "" %>
+            <% } %>
+            >
+            <label for="<%= m._id %>" class="form-check-label"><%= m.title %></label>
+          </div>  
+        <% } %>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="cateringMenu" value=""
+          id="menu_none" <%= !catering.cateringMenu ? "checked" : "" %>>
+          <label for="menu_none" class="form-check-label">None</label>
+        </div>
+      </fieldset>
+
+    <button class="btn btn-primary my-3" type="submit">Submit</button>
+    <br>
+    <a href="/catering">Go back to catering</a>
+  </div>
+</form>

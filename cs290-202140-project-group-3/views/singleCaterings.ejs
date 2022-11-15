@@ -1,0 +1,28 @@
+<%- include("common-header.ejs", {title:"Single Cater"}) %>
+<div class = "singleCater">
+<h1>
+  Customer: <% for (let customer of catering.cateringCustomer) { %>
+  <a href="/customer/<%- customer._id %>" ><%- customer.customerFirstName %> <%- customer.customerLastName %></a></h2>
+<% } %>
+</h1>
+<h2>Address: <%- catering.cateringAddress %></h2>
+<h2>Date: <%- catering.cateringDate %></h2>
+<h2>Menu: 
+  <% for (let menu of catering.cateringMenu) { %>
+  <a href="/menus/<%- menu._id %>" ><%- menu.title %></a></h2>
+<% } %>
+<h2>Party Size: <%- catering.cateringPartySize %></h2>
+
+</div>
+
+<div class = "CateringBtn">
+
+<ul style = "list-style-type: none">
+  <li><button type = "button" class ="btn btn-secondary CateringBtn"><a href="/catering/update/<%= catering._id %>">Update this Catering Order</a></button></li>
+  <li><button type = "button" class ="btn btn-secondary CateringBtn"><a href="/catering/delete/<%= catering._id %>">Delete this Catering Order</a></button></li>
+  <li><button type = "button" class ="btn btn-secondary CateringBtn"><a href="/catering">Return to Reservation List</a></button></li>
+</ul>
+
+</div>
+
+<%- include("common-footer.ejs") %>

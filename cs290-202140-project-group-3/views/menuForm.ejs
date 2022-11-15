@@ -1,0 +1,53 @@
+<%- include("common-header.ejs", {title: `Update Menu: ${menu.title}` })%>
+
+<% if(locals.errors) { %>
+  <div class="alert alert-danger">
+    <ul class="mb-0" >
+      <% errors.forEach(function(error) { %>
+        <li class="errors-list"><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<div class = "form-box">
+<form method="POST" action="/menus/update/<%= menu._id %>" id="menuForm">
+  <input type="hidden" name="id" value="<%= menu._id %>" >
+  <div class="m-3">
+    <label for="title" class=" fs-4"> Menu Title <em>(Required)</em></label>
+    <input type="text" class="form-control" name="title" id="title"
+      value="<%= menu.title %>" required maxlength="30">
+  </div>
+  <div class="m-3">
+    <label for="description" class=" fs-4">Description <em>(Required)</em></label>
+    <input type="text" class="form-control" name="description" id="description"
+      value="<%= menu.description %>" required maxlength="100">
+  </div>
+  <fieldset class="m-3">
+    <legend class="fs-4">Feature this menu?</legend>
+    <input class= "fs-5" type="radio" id="yes" name="featured" value="true" <%= menu.featured === true ? "checked" : "" %>>
+    <label for="yes">Yes</label><br>
+    <input class= "fs-5" type="radio" id="no" name="featured" value="false" <%= menu.featured === false ? "checked" : "" %>>
+    <label for="no">No</label><br>
+  </fieldset>
+  <hr>
+  <% if(locals.items) {  %>
+  <div class="m-3 ">
+    <label for="items" class="fs-4">Select Menu Items:</label>
+    <select class="form-select fs-5" id="items" name="items" multiple aria-describedby="selectHelp">
+      <% for(let m of items) { %>
+          <option value="<%= m._id %>" <%= m.selected ? "selected" : "" %>> 
+            <%= m.name %>
+          </option>
+      <% } %>
+    </select>
+    <div id="selectHelp" class="form-text text-dark fs-6">Hold ctrl to select multiple</div>
+  </div>
+ <%   } %>
+  <hr>
+  <button class="btn btn-dark m-3" type="submit">Submit</button>
+  <p><a class="button-link fs-5 m-3" href="/menus/">Cancel Edit</a></p>
+</form>
+</div>
+
+<%- include("common-footer.ejs") %>

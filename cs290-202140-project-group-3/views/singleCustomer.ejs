@@ -1,0 +1,38 @@
+<%- include("common-header.ejs", {title: "Individual Customer Records"}) %>
+
+<div class="form-box">
+    <div class="customerItem">
+      <h2><strong> <%- customerFirstName %> <%- customerLastName %> </strong></h2>
+      <p class="text-uppercase"><strong>Address:</strong> <%- customerAddress %> <%- customerCity %> <%- customerState %> <%- customerZipcode %></p>
+      <p class="text-uppercase"><strong>Telephone:</strong> <%- customerTelephone %></p>
+      <p class="text-uppercase"><strong>Reservation(s):</strong></p>
+      <ul>
+        <% for (let reservations of customerReservations) { %>
+          <li class="text-uppercase"><a href="/reservation/<%- reservations._id %>" ><%- reservations.date %></a></li>
+        <% } %>
+      </ul>
+      <p><strong>Catering Order(s):</strong></p>
+      <ul>
+        <% for (let catering of customerCateringOrders) { %>
+          <li class="text-uppercase"><a href="/catering/<%- catering._id %>" ><%- catering.cateringDate %></a></li>
+        <% } %>
+      </ul>
+
+      <p><strong>Favorite Food(s):</strong></p>
+      <ul>
+        <% for (let favFoods of customerFavoriteFoods) { %>
+          <li class="text-uppercase"><a href="/menuItems/<%- favFoods._id %>" ><%- favFoods.name %></a></li>
+        <% } %>
+      </ul>
+
+      <p>Click here to <a href="/customer/update/<%=_id %>">Update a customer</a></p>
+      <p>Click here to <a href="/customer/delete/<%=_id %>">Delete a customer</a></p>
+      <p>Click here to <a href="/customer">Return to Customer List</a></p>
+    </div>
+  </div>
+
+    <%- include("common-footer.ejs") %>
+
+
+
+

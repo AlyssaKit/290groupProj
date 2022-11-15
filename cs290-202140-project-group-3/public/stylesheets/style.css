@@ -1,0 +1,449 @@
+
+/*--------------------------------------Menu simple */
+
+.menu-item-image{
+    width: 100%;
+    max-width: 400px;
+    border: 5px black;
+}
+
+.menu-form-image{
+    width:100%;
+    max-width: 200px;
+}
+
+.form-box {
+    background-color: #ad974f;
+    border: 15px solid transparent;
+    background-clip: padding-box;
+}
+
+.button-link {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+/* google maps styling */
+
+
+
+#map {
+    width: 80%;
+    height: 700px;
+    margin: 20px auto;
+}
+
+#floating-panel {
+    position: relative;
+    top: 10px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: "Roboto", "sans-serif";
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+
+
+
+/* end google maps styling */
+
+
+
+
+body a{
+    color: black;
+}
+body a:visited{
+    color: black;
+}
+
+body{
+    background-image: url(/public/images/whitebackground.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+} 
+
+
+
+/* -----------------------------Fancy Styling --------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------Common Elements */
+
+/* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(/public/images/whitebackground.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+} 
+
+body a{
+    color: black;
+}
+body a:visited{
+    color: black;
+}
+
+body a:hover{
+    color: grey;
+}
+*/
+
+/* ----------------------------------------------------------Index/Home Page */
+
+/*-----------------------------------------------------------Menu Page */
+
+/*
+.menu-header{
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+.menu-background {
+    
+    opacity: 0.5;
+    width: 100%;
+}
+.menu-title-description{
+    
+    position: absolute;
+    color: white;
+    text-align: center;
+    
+}
+#main-menu-title{
+    font-family: 'Della Respira', serif;
+    font-size: 6vw;
+}
+
+#menu-description-info{
+    font-size: 2.5vw;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif
+}
+
+.menus{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    background-color: #ad974f;
+    width: 50%;
+    border: 15px solid transparent;
+    background-clip: padding-box;
+    height: 25vw;
+}
+
+.menu-title{
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+.menu-page-image{
+    max-height: 20vw;
+    
+}
+
+.menu-description{
+    flex-basis: 50%;
+    position: relative;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    
+}
+
+.menu-description .btn{
+    font-weight: bold;
+}
+.menu-image{
+    margin: auto;
+    flex-basis: 50%;
+}
+*/
+/*-----------------------------------------------------------Menu Page Manager*/
+/*
+#menu-editor-title{
+    font-family: 'Della Respira', serif;
+    font-size: 6vw;
+    
+    text-align: center;
+}
+.menu-editor-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ad974f;
+    border: 15px solid transparent;
+    background-clip: padding-box;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: black;
+    padding:10px;
+}
+
+.menu-editor-content table{
+    border: 15px solid transparent;
+    background-clip: padding-box;
+}
+
+.menu-editor-content caption {
+    font-family: 'Della Respira', serif;
+    color: white;
+}
+
+.menu-data-title{
+    text-decoration: underline;
+    font-size: 2rem;
+    font-family: 'Della Respira', serif;
+}
+.menu-data{
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.75rem; 
+}
+
+.menu-editor-content-flexbox{
+    display:flex;
+    background-color: #ad974f;
+    border: 15px solid transparent;
+    background-clip: padding-box;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: black;
+    padding:10px;
+    
+}
+
+.menu-editor-content-image img{
+    max-width: 400px;
+    height: auto;
+}
+*/
+/*-----------------------------------------------------------Menu Item Page-End User */
+
+
+/*-----------------------------------------------------------Customer Page */
+.custlistitem {
+    list-style: none;
+}
+
+.allcust {
+    font-weight: bold;
+    font-size: large;
+}
+
+.form-label {
+    font-weight: bold;
+    padding: 1em;
+}
+
+.form-check {
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+
+
+
+/*-----------------------------------------------------------Reservations Page */
+.reservationLink {
+    color: black;
+    text-decoration: none;
+}
+.reservationLink:hover{
+    color:gold;
+    background-color: black;
+    padding: .2rem;
+    border-radius: .5rem;
+}
+.reservationLink:visited{
+    color: black;
+}
+.reservationLink:visited:hover{
+    color: gold;
+    background-color: black;
+    padding: .2rem;
+    border-radius: .5rem;
+}
+.rating {
+    --dir: right;
+    --fill: gold;
+    --fillbg: rgba(100, 100, 100, 0.15);
+    --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
+    --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
+    --stars: 5;
+    --starsize: 3rem;
+    --symbol: var(--star);
+    --value: 1;
+    --w: calc(var(--stars) * var(--starsize));
+    --x: calc(100% * (var(--value) / var(--stars)));
+    block-size: var(--starsize);
+    inline-size: var(--w);
+    position: relative;
+    border-top: 2rem;
+    margin-top: 2rem; 
+    border-bottom: 0;
+    margin-bottom: 0; 
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+      }
+[dir="rtl"] .rating {
+  --dir: left;
+}
+.rating::-moz-range-track {
+  background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+  block-size: 100%;
+  mask: repeat left center/var(--starsize) var(--symbol);
+}
+.rating::-webkit-slider-runnable-track {
+  background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+  block-size: 100%;
+  mask: repeat left center/var(--starsize) var(--symbol);
+  -webkit-mask: repeat left center/var(--starsize) var(--symbol);
+}
+.rating::-moz-range-thumb {
+  height: var(--starsize);
+  opacity: 0;
+  width: var(--starsize);
+}
+.rating::-webkit-slider-thumb {
+  height: var(--starsize);
+  opacity: 0;
+  width: var(--starsize);
+  -webkit-appearance: none;
+}
+.rating, .rating-label {
+  display: block;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.rating-label {
+  margin-block-end: 1rem;
+}
+.hide {
+  display: none;
+}
+.myDIV:hover + .hide {
+  display: block;
+  margin-top:0;
+  border-top:0;
+  padding-top: 0;
+  color: rgb(88, 87, 87);
+}
+
+/*-----------------------------------------------------------Catering Page */
+
+
+.Catering-Nav{
+    display: flex;
+    background-color: black;
+}
+
+.Catering-Nav a{
+    text-decoration: none;
+    color: aliceblue;
+    margin: auto;
+}
+
+.Catering-Nav a:hover{
+    color: black;
+    background-color: #ad974f;
+}
+.Catering-Data{
+display: flex;
+justify-content: center;
+}
+
+#Catering-Header{
+    color: black;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Della Respira', serif;
+}
+
+.Catering-Data div{
+    justify-content: center;
+    text-align: center;
+    background-color: #ad974f;
+    font-size: 16pt;
+    padding: 20px;
+    }
+
+
+.Catering-Data a{
+    text-decoration: none;
+    color:black
+}
+
+.Catering-Data a:hover{
+    color: aliceblue;
+}
+
+.customer-title{
+    font-family: 'Della Respira', serif;
+}
+
+.singleCater{
+    display: table;
+    background-color: #e4c664;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.singleCater h1{
+    padding-bottom: 5px;
+}
+
+.singleCater h2{
+    padding-bottom: 5px;
+}
+
+.allCatering table{
+    background-color: #e4c664;
+}
+
+.CateringBtn{
+    margin-bottom: 10px;
+    margin-left: 5px ;
+}
+
+
+
+/* #reservation-page-Title {
+    text-align: center;
+    background-image: ;
+}
+
+
+
+/*-----------------------------------------------------------Catering Page */

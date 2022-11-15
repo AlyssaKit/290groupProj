@@ -1,0 +1,24 @@
+<%- include("common-header.ejs", {title:"Albacari Customers"}) %>
+
+<div class="form-box">
+
+
+<h2 class="text-center m-3">Albacari Customers</h2>
+<div class="form-box text-center m-3">
+<ul class="custlistitem">
+  <% for(let customer of customerList) {
+    console.log(customer);  
+    -%>
+    <li><a class="allcust" href="<%- customer.url %>"><%- customer.customerFirstName %> <%- customer.customerLastName %></a></li>
+  <% } %>
+</ul>
+</div>
+
+
+<p class="text-center"><a class="btn btn-secondary" href="/customer/create/">Create new customer</a></p>
+
+<p class="text-center m-3"><a href="/">Return Home</a></p>
+
+</div>
+
+<%- include("common-footer.ejs") %>

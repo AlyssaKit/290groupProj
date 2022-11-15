@@ -1,0 +1,46 @@
+<%- include("common-header.ejs", {title:"Albacari Caterings"}) %>
+<div class = "allCatering">
+<h1>Albacari Caterings:</h1>
+<table class = "table table-striped table-hover">
+<thead>
+  <tr>
+    <th scope="col">Date/Time</th>
+      <th scope="col">Address</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Party Size</th>
+      <th scope="col">Menu</th>
+  </tr>
+</thead>
+<tbody>
+  <% for (let caterings of cateringList) { -%>
+    <tr>
+      
+      <th scope = "row"><a href = "<%- caterings.url %>" class = "resLink"><%- caterings.cateringDate%></a></th>
+      <td> <%- caterings.cateringAddress%></a></td>
+
+      <%for(let c of caterings.cateringCustomer) { -%>
+        <td><a href="/customer/<%- c._id %>" class="resLink"><%- c.customerFirstName %> <%- c.customerLastName %> </a></td>
+      <% } %>
+
+      <td> <%- caterings.cateringPartySize%></a></td>
+
+      <%for(let m of caterings.cateringMenu) { -%>
+        <td><a href="/menus/<%- m._id %>" class="resLink"> <%- m.title %> </a></td>
+      <% } %>
+
+    </tr>
+
+
+
+
+  <% } %>
+</tbody>
+</table>
+</div>
+
+
+<button type = "button" class ="btn btn-secondary CateringBtn"> <a href="/catering/create/">Create a reservation</a> </button>
+
+
+
+<%- include("common-footer.ejs") %>

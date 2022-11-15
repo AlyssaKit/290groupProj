@@ -1,0 +1,94 @@
+<%- include("common-Header.ejs", {title:title}) %>
+
+<form method="POST" action="/review/update/<%= review._id %>" id="reviewForm">
+    <input type="hidden" name="id" value="<%= review._id %>" >
+
+    <div class="container">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name: <em>(Required, please enter your first name)</em></label>
+      <input type="text" class="form-control" name="firstName" id="firstName"
+        value="<%= review.firstName %>" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name: <em>(Required, please enter your last name)</em></label>
+        <input type="text" class="form-control" name="lastName" id="lastName"
+          value="<%= review.lastName %>" required>
+      </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Password: <em>(Required, please enter a password)</em></label>
+        <input type="text" class="form-control" name="password" id="password"
+          value="<%= review.password %>" required>
+    </div>      
+    <div class="mb-3">
+      <label for="rating" class="form-label">Enter your rating:<em>(Required, please enter a number 1-5)</em></label>
+      <input type="number" placeholder="5.0" step="0.01" class="form-control" name="rating" id="rating"
+        value="<%= review.rating %>" required min="1" max="5">
+    </div>
+
+    <div class="mb-3">
+        <label for="image_url" class="form-label">Enter the url of the image you want to upload: </label>
+        <input type="text" class="form-control" name="image_url" id="image_url"
+        value="<%= review.image_url %>">
+    </div>
+
+    <div class="mb-3">
+        <label for="comment" class="form-label">Enter your review: <em>(Required, please enter your review of the resturant)</em></label>
+        <input type="text" class="form-control" name="comment" id="comment"
+        value="<%= review.comment %>">
+    </div>
+
+    <fieldset class="mb-3 ">
+        <legend>Menus Availible</legend>
+        <% for(let m of menus) { %>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="menuAvalible" value="<%= m._id %>"
+            id="<%= m._id %>" 
+            <% for(let mA of review.menuAvalible) {%>
+            <%= mA && mA._id.equals(m._id) ? "checked" : "" %>
+            <% } %>
+            >
+            <label for="<%= m._id %>" class="form-check-label"><%= m.title %></label>
+          </div>  
+        <% } %>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" name="menuAvalible" value=""
+          id="menu_none" <%= !review.menuAvalible ? "checked" : "" %>>
+          <label for="menu_none" class="form-check-label">None</label>
+        </div>
+      </fieldset>
+
+    <button class="btn btn-primary my-3" onclick="submitting()" type="submit">Submit</button>
+    <br>
+    <a href="/review">Go back to reviews</a>
+</div>
+</form>
+<script>
+  function submitting(){
+  console.log("Raw cookies:", document.cookie);
+  let cookieMap = getCookieDictionary( );
+  console.log("Cookies as map:", cookieMap);
+  getCustomer();
+
+  function getCookieDictionary() {
+    let cookieArray = document.cookie.split('; ');
+    let cookieMap = {};
+    for(let c of cookieArray) {
+      let cParts = c.split("=");
+      if(cParts.length > 1)
+        cookieMap[cParts[0]] = cParts[1];
+    }
+    return cookieMap;
+  }
+
+  function getCustomer() {
+    console.log(cookieMap['firstName'], cookieMap['lastName']);
+    document.cookie = 'firstName=' + document.querySelector('#firstName').value + ';path=/';
+    document.cookie = 'lastName=' + document.querySelector('#lastName').value + ';path=/';
+    document.cookie = 'password=' + document.querySelector('#password').value + ';path=/';
+    console.log("Raw cookies:", document.cookie);
+  }
+}
+</script>
+<%- include("common-footer.ejs") %>

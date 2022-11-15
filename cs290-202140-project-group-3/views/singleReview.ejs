@@ -1,0 +1,44 @@
+<%- include("common-header.ejs", {title: "Individual Review Record"}) %>
+
+<div class="container">
+    <div style=" text-align: center;">
+        <h2>Reviewer Name: <%- review.firstName %> <%- review.lastName %> </h2>
+        <h3>Rating: <%- review.rating %></h3>
+        <img src="<%- review.image_url %>" alt = "<%- review.firstName %>’s review photo"  height="200">
+		<p><h4>Review:</h4> "<%- review.comment %>"</p>
+        <h4>Menus Avalible at the time of Visit:</h4>
+          <ul>
+            <b>
+            <% for(let m of review.menuAvalible) { -%>
+                <%= m && m._id.equals(review.menuAvalible) ? "true" : "" %>
+                <li style="list-style: none;"><a href="/menus/<%- m._id %>" class="reservationLink"> <%- m.title %></a></li>
+            <% } %>
+            </b>
+          </ul>
+    </div>
+    <br>
+    <ul>
+    <% if(cookiefirstName == review.firstName && cookielastName == review.lastName && cookiePassword == review.password){ %>
+    <li><a href="/review/update/<%= review._id %>" class="reservationLink">Update this review</a></li>
+    <li><a href="/review/delete/<%= review._id %>" class="reservationLink">Delete this review</a></li>
+    <% } %>
+    <li><a href="/review" class="reservationLink">Return to review List</a></li>
+    </ul>
+</div>
+<script>
+    console.log("Raw cookies:", document.cookie);
+    let cookieMap = getCookieDictionary( );
+    console.log("Cookies as map:", cookieMap);
+  
+    function getCookieDictionary() {
+      let cookieArray = document.cookie.split('; ');
+      let cookieMap = {};
+      for(let c of cookieArray) {
+        let cParts = c.split("=");
+        if(cParts.length > 1)
+          cookieMap[cParts[0]] = cParts[1];
+      }
+      return cookieMap;
+    }
+    </script>
+<%- include("common-footer.ejs") %>

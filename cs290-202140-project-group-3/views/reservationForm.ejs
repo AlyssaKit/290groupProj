@@ -1,0 +1,68 @@
+<%- include("common-Header.ejs", {title:title}) %>
+
+<form method="POST" action="/reservation/update/<%= reservation._id %>" id="reservationForm">
+    <input type="hidden" name="id" value="<%= reservation._id %>" >
+  <div class="container">
+    <div class="mb-3">
+      <label for="date" class="form-label">Date: <em>(Required, please format month-day-year time AM/PM (eg 08-22-2022 5:30 PM))</em></label>
+      <input type="text" class="form-control" name="date" id="date"
+        value="<%= reservation.date %>" required>
+    </div>
+    <fieldset class="mb-3 ">
+        <legend>Customer</legend>
+        <% for(let c of customer) { %>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="customer" value="<%= c._id %>"
+            id="<%= c._id %>" 
+            <% for(let tc of reservation.customer) { %>
+            <%= tc && tc._id.equals(c._id) ? "checked" : "" %>
+            <% } %>
+            >
+            <label for="<%= c._id %>" class="form-check-label"><%= c.customerFirstName %> <%= c.customerLastName %></label>
+          </div>  
+        <% } %>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="customer" value=""
+          id="customer_none" <%= !reservation.customer ? "checked" : "" %>>
+          <label for="customer_none" class="form-check-label">None</label>
+        </div>
+      </fieldset>
+
+    <div class="mb-3">
+      <label for="peopleAmount" class="form-label">Enter the ammount of people in the party <em>(Required)</em></label>
+      <input type="number" class="form-control" name="peopleAmount" id="peopleAmount"
+        value="<%= reservation.peopleAmount %>" required min="1" max="20">
+    </div>
+
+    <div class="mb-3">
+        <label for="specialOccassion" class="form-label">Enter the special occassion <em>(Required, if none please type "NA")</em></label>
+        <input type="text" class="form-control" name="specialOccassion" id="specialOccassion"
+        value="<%= reservation.specialOccassion %>">
+    </div>
+
+    <fieldset class="mb-3 ">
+        <legend>Menus Availible</legend>
+        <% for(let m of menus) { %>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="menuAvalible" value="<%= m._id %>"
+            id="<%= m._id %>" 
+            <% for(let mA of reservation.menuAvalible) {%>
+            <%= mA && mA._id.equals(m._id) ? "checked" : "" %>
+            <% } %>
+            >
+            <label for="<%= m._id %>" class="form-check-label"><%= m.title %></label>
+          </div>  
+        <% } %>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" name="menuAvalible" value=""
+          id="menu_none" <%= !reservation.menuAvalible ? "checked" : "" %>>
+          <label for="menu_none" class="form-check-label">None</label>
+        </div>
+      </fieldset>
+
+    <button class="btn btn-primary my-3" type="submit">Submit</button>
+    <br>
+    <a href="/reservation">Go back to reservations</a>
+  </div>
+</form>
+<%- include("common-footer.ejs") %>
